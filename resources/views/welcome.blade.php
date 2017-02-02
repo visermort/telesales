@@ -83,7 +83,7 @@
                     </div>
 
                     <div class="links">
-                        <a href="/home">Воспользоваться сервисом</a>
+                        <a href="{{ action('HomeController@index') }}">Воспользоваться сервисом</a>
                     </div>
                 </div>
 

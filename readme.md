@@ -11,5 +11,5 @@
 5. php artisan key:generate
 6. php artisan migrate
 7. php artisan db:seed
-7. Настроить корень веб-сервера в папку public и отрыть страницу в браузере
+8. Настроить корень веб-сервера в папку public и отрыть страницу в браузере
  или выполнить php artisan serve, страница будет доступна по адресу http://localhost:8000
