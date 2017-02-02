@@ -232,6 +232,8 @@ return [
         'Reminder'   => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
         'Sentinel'   => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
 
+        'Navigate' => App\helpers\Navigate::class,
+
     ],
 
 ];

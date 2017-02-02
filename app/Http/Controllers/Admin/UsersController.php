@@ -20,7 +20,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = Users::paginate();
+        $users = Users::paginate(config('telesales.paginate'));
         return view('admin.users.index', [
             'users' => $users,
         ]);
@@ -62,7 +62,13 @@ class UsersController extends Controller
             'user' => $user,
         ]);
     }
-    
+
+    /**
+     * update user
+     * @param Request $request
+     * @param $userId
+     * @return mixed
+     */
     public function update(Request $request, $userId)
     {
         $this->validate($request, [

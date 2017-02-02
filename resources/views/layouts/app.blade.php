@@ -44,14 +44,23 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
+                    @if ($user = Sentinel::check())
+                        <ul class="nav navbar-nav">
+                            <li ><a href="#">Заказы</a></li>
+                            @if ($user->email == config('telesales.adminEmail'))
+                                <li class="{{ Navigate::isActive('admin/users') }}"><a href="{{ action('Admin\UsersController@index') }}">Пользователи</a></li>
+                                <li class="{{ Navigate::isActive('admin/goods') }}"><a href="{{ action('Admin\GoodController@index') }}">Товары</a></li>
+                                <li class="{{ Navigate::isActive('admin/service') }}"><a href="{{ action('Admin\ServiceController@index') }}">Услуги</a></li>
+                                <li class="{{ Navigate::isActive('admin/additional') }}"><a href="{{ action('Admin\AdditionalController@index') }}">Прочее</a></li>
+                                <li class="{{ Navigate::isActive('admin/state') }}"><a href="{{ action('Admin\StateController@index') }}">Статусы</a></li>
+                            @endif
+                        </ul>
 
+                    @endif
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-                        @if (!$user = Sentinel::check())
+                        @if (!$user)
                             <li><a href="{{ action('Auth\CartalistController@index') }}">Login</a></li>
                             <li><a href="{{ action('Auth\CartalistController@registerForm') }}">Register</a></li>
                         @else
