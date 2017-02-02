@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/custom.css">
 
     <!-- Scripts -->
     <script>
@@ -73,10 +75,23 @@
             </div>
         </nav>
 
-        @yield('content')
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default clearfix" id="model-data">
+
+                        @yield('content')
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    <script src="/js/custom.js" ></script>
 </body>
 </html>
