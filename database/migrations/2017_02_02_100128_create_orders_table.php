@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->integer('order_state_id')->unsigned();
             $table->foreign('order_state_id')->references('state_id')->on('state');
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('user_id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->integer('item_id');
             $table->string('item_type');
         });
