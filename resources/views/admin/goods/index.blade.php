@@ -17,12 +17,12 @@
                     </span>
                     @endif
                 </div>
-                <div class="form-group{{ $errors->has('goog_price') ? ' has-error' : '' }} col-sm-3">
-                    <label for="goog_price">Цена</label>
-                    <input id="goog_price" type="text" class="form-control" name="goog_price" placeholder="Цена" value="{{ old('goog_price') }}" >
-                    @if ($errors->has('goog_price'))
+                <div class="form-group{{ $errors->has('good_price') ? ' has-error' : '' }} col-sm-3">
+                    <label for="good_price">Цена</label>
+                    <input id="good_price" type="text" class="form-control" name="good_price" placeholder="Цена" value="{{ old('good_price') }}" >
+                    @if ($errors->has('good_price'))
                         <span class="help-block">
-                        <strong>{{ $errors->first('goog_price') }}</strong>
+                        <strong>{{ $errors->first('good_price') }}</strong>
                     </span>
                     @endif
                 </div>
@@ -52,7 +52,7 @@
                 <tr>
                     <td>{{ $good->good_id }}</td>
                     <td>{{ $good->good_name }}</td>
-                    <td>{{ $good->goog_price }}</td>
+                    <td>{{ $good->good_price }}</td>
                     <td><a href="{{ action('Admin\GoodController@edit', $good->good_id) }}"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" ></i></a></td>
                 </tr>
             @endforeach

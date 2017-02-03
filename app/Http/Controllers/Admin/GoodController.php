@@ -29,11 +29,11 @@ class GoodController extends Controller
     {
         $this->validate($request, [
             'good_name' => 'required|max:255|unique:goods,good_name',
-            'goog_price' => 'required|integer|min:1',
+            'good_price' => 'required|integer|min:1',
         ]);
         $good = [
             'good_name' => $request->good_name,
-            'goog_price' => $request->goog_price,
+            'good_price' => $request->good_price,
         ];
 
         Good::create($good);
@@ -64,12 +64,12 @@ class GoodController extends Controller
     {
         $this->validate($request, [
             'good_name' => 'required|max:255|unique:goods,good_name,'.$goodId.',good_id',
-            'goog_price' => 'required|integer|min:1',
+            'good_price' => 'required|integer|min:1',
         ]);
         // dd($request);
         $good = Good::find($goodId);
         $good->good_name=$request->good_name;
-        $good->goog_price=$request->goog_price;
+        $good->good_price=$request->good_price;
         $good->save();
 
         return redirect()->action('Admin\GoodController@index');

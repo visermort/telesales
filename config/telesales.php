@@ -6,5 +6,11 @@ return [
     'adminEmail' => env('ADMIN_EMAIL'),
 
     'paginate' => 2,
+
+    'itemTypes' => [
+        'good' => 'Продукты',
+        'service' => 'Услуги',
+        'additional' => 'Прочее',
+    ],
     
 ];

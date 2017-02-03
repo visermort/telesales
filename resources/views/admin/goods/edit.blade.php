@@ -20,13 +20,13 @@
 
             </div>
 
-            <div class="form-group {{ $errors->has('goog_price') ? ' has-error' : ''}}">
-                <label for="goog_price">Цена</label>
-                <input name="goog_price" id="goog_price" class="form-control" value="{{ $good->goog_price }}">
+            <div class="form-group {{ $errors->has('good_price') ? ' has-error' : ''}}">
+                <label for="good_price">Цена</label>
+                <input name="good_price" id="good_price" class="form-control" value="{{ $good->good_price }}">
 
-                @if ($errors->has('goog_price'))
+                @if ($errors->has('good_price'))
                     <span class="help-block">
-                        <strong>{{ $errors->first('goog_price') }}</strong>
+                        <strong>{{ $errors->first('good_price') }}</strong>
                     </span>
                 @endif
 

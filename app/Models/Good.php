@@ -10,7 +10,7 @@ class Good extends Model
 
     protected $primaryKey = 'good_id';
 
-    protected $fillable = ['good_name', 'goog_price'];
+    protected $fillable = ['good_name', 'good_price'];
 
     public $timestamps = false;
     

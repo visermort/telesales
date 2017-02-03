@@ -26,6 +26,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index');
     Route::get('/logout', 'Auth\CartalistController@logout');
 
+    Route::get('/orders', 'OrderController@index');
+    Route::get('/orders/edit', 'OrderController@edit');
+
 });
 
 Route::group(['middleware' => ['admin']], function () {

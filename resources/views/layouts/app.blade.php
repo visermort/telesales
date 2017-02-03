@@ -46,7 +46,7 @@
                     <!-- Left Side Of Navbar -->
                     @if ($user = Sentinel::check())
                         <ul class="nav navbar-nav">
-                            <li ><a href="#">Заказы</a></li>
+                            <li class="{{ Navigate::isActive('orders') }}" ><a href="{{ action('OrderController@index') }} ">Заказы</a></li>
                             @if ($user->email == config('telesales.adminEmail'))
                                 <li class="{{ Navigate::isActive('admin/users') }}"><a href="{{ action('Admin\UsersController@index') }}">Пользователи</a></li>
                                 <li class="{{ Navigate::isActive('admin/goods') }}"><a href="{{ action('Admin\GoodController@index') }}">Товары</a></li>

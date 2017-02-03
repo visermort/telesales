@@ -14,6 +14,7 @@ class Navigate
     public static function isActive($url)
     {
         $path = Request::path();
-        return (strpos($path, $url) > -1 ? "active" : "");
+
+        return (strpos($path, $url) === 0 ? "active" : "");
     }
 }

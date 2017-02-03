@@ -43,11 +43,10 @@ class StateController extends Controller
     }
     /**
      * edit state
-     * @param Request $request
      * @param $stateId
      * @return mixed
      */
-    public function edit(Request $request, $stateId)
+    public function edit($stateId)
     {
         $state = State::find($stateId);
         return view('admin.state.edit', [
