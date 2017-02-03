@@ -22,14 +22,16 @@ class CartalistController extends Controller
     }
 
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function login(Request $request)
     {
-        //dd($request);
         $this->validate($request, [
             'email' => 'required:email',
             'password' => 'required|min:6',
             'remember'  => 'boolean',
-
         ]);
         $credentials = [
             'email'    => $request->email,
@@ -40,7 +42,20 @@ class CartalistController extends Controller
         } else {
             $user = Sentinel::authenticateAndRemember($credentials);
         }
-        return redirect()->action('HomeController@index');
+        if ($user) {
+            return view('common.messages', [
+                'status' => true,
+                'message' => $user->first_name.' '.$user->last_name.
+                    ' Вы вошли на сайт. Cпасибо что вы с нами!',
+                'title' => 'Login',
+            ]);
+        } else {
+            return view('common.messages', [
+                'status' => false,
+                'message' => 'Неправильное имя пользовтеля или пароль',
+                'title' => 'Login',
+            ]);
+        }
     }
 
     /**

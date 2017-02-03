@@ -5,11 +5,11 @@ return [
      */
     'adminEmail' => env('ADMIN_EMAIL'),
 
-    'paginate' => 2,
+    'paginate' => 5,
 
     'itemTypes' => [
-        'good' => 'Продукты',
-        'service' => 'Услуги',
+        'goods' => 'Продукты',
+        'services' => 'Услуги',
         'additional' => 'Прочее',
     ],
     

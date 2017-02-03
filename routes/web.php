@@ -27,7 +27,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/logout', 'Auth\CartalistController@logout');
 
     Route::get('/orders', 'OrderController@index');
-    Route::get('/orders/edit', 'OrderController@edit');
+    Route::post('/orders/store', 'OrderController@store');
+    Route::get('/orders/edit/{orderid}', 'OrderController@edit');
+    Route::post('/orders/update/{orderid}', 'OrderController@update');
+    
+    //ajax
+    Route::get('/orders/getobjs', 'OrderController@getobjs');
 
 });
 

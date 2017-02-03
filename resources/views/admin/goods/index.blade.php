@@ -8,21 +8,21 @@
         <div class="panel col-sm-12 ">
             <form id="photos-form" method="post" action="{{ action('Admin\GoodController@store') }}" >
                 {{ csrf_field() }}
-                <div class="form-group{{ $errors->has('good_name') ? ' has-error' : '' }} col-sm-6">
-                    <label for="good_name">Название</label>
-                    <input id="good_name" type="text" class="form-control" name="good_name" placeholder="Название" value="{{ old('good_name') }}" >
-                    @if ($errors->has('good_name'))
+                <div class="form-group{{ $errors->has('goods_name') ? ' has-error' : '' }} col-sm-6">
+                    <label for="goods_name">Название</label>
+                    <input id="goods_name" type="text" class="form-control" name="goods_name" placeholder="Название" value="{{ old('goods_name') }}" >
+                    @if ($errors->has('goods_name'))
                         <span class="help-block">
-                        <strong>{{ $errors->first('good_name') }}</strong>
+                        <strong>{{ $errors->first('goods_name') }}</strong>
                     </span>
                     @endif
                 </div>
-                <div class="form-group{{ $errors->has('good_price') ? ' has-error' : '' }} col-sm-3">
-                    <label for="good_price">Цена</label>
-                    <input id="good_price" type="text" class="form-control" name="good_price" placeholder="Цена" value="{{ old('good_price') }}" >
-                    @if ($errors->has('good_price'))
+                <div class="form-group{{ $errors->has('goods_price') ? ' has-error' : '' }} col-sm-3">
+                    <label for="goods_price">Цена</label>
+                    <input id="goods_price" type="text" class="form-control" name="goods_price" placeholder="Цена" value="{{ old('goods_price') }}" >
+                    @if ($errors->has('goods_price'))
                         <span class="help-block">
-                        <strong>{{ $errors->first('good_price') }}</strong>
+                        <strong>{{ $errors->first('goods_price') }}</strong>
                     </span>
                     @endif
                 </div>
@@ -50,10 +50,10 @@
             @foreach ($goods as $good)
 
                 <tr>
-                    <td>{{ $good->good_id }}</td>
-                    <td>{{ $good->good_name }}</td>
-                    <td>{{ $good->good_price }}</td>
-                    <td><a href="{{ action('Admin\GoodController@edit', $good->good_id) }}"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" ></i></a></td>
+                    <td>{{ $good->goods_id }}</td>
+                    <td>{{ $good->goods_name }}</td>
+                    <td>{{ $good->goods_price }}</td>
+                    <td><a href="{{ action('Admin\GoodController@edit', $good->goods_id) }}"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" ></i></a></td>
                 </tr>
             @endforeach
 

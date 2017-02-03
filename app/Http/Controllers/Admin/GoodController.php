@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Good;
+use App\Models\Goods;
 
 class GoodController extends Controller
 {
@@ -14,7 +14,7 @@ class GoodController extends Controller
      */
     public function index()
     {
-        $goods = Good::paginate(config('telesales.paginate'));
+        $goods = Goods::paginate(config('telesales.paginate'));
         return view('admin.goods.index', [
             'goods' => $goods,
         ]);
@@ -28,15 +28,15 @@ class GoodController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'good_name' => 'required|max:255|unique:goods,good_name',
-            'good_price' => 'required|integer|min:1',
+            'goods_name' => 'required|max:255|unique:goods,goods_name',
+            'goods_price' => 'required|integer|min:1',
         ]);
         $good = [
-            'good_name' => $request->good_name,
-            'good_price' => $request->good_price,
+            'goods_name' => $request->goods_name,
+            'goods_price' => $request->goods_price,
         ];
 
-        Good::create($good);
+        Goods::create($good);
 
         return redirect()->action('Admin\GoodController@index');
     }
@@ -49,7 +49,7 @@ class GoodController extends Controller
      */
     public function edit(Request $request, $goodId)
     {
-        $good = Good::find($goodId);
+        $good = Goods::find($goodId);
         return view('admin.goods.edit', [
             'good' => $good,
         ]);
@@ -63,13 +63,13 @@ class GoodController extends Controller
     public function update(Request $request, $goodId)
     {
         $this->validate($request, [
-            'good_name' => 'required|max:255|unique:goods,good_name,'.$goodId.',good_id',
-            'good_price' => 'required|integer|min:1',
+            'goods_name' => 'required|max:255|unique:goods,goods_name,'.$goodId.',goods_id',
+            'goods_price' => 'required|integer|min:1',
         ]);
         // dd($request);
-        $good = Good::find($goodId);
-        $good->good_name=$request->good_name;
-        $good->good_price=$request->good_price;
+        $good = Goods::find($goodId);
+        $good->goods_name=$request->goods_name;
+        $good->goods_price=$request->goods_price;
         $good->save();
 
         return redirect()->action('Admin\GoodController@index');

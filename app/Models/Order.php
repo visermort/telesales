@@ -45,7 +45,8 @@ class Order extends Model
      */
     public function type()
     {
-        return config('telesales.itemTypes')[$this->item_type];
+        return (isset(config('telesales.itemTypes')[$this->item_type]) ?
+            config('telesales.itemTypes')[$this->item_type] : '');
     }
 
     /**
@@ -58,12 +59,14 @@ class Order extends Model
         $id = $this->item_type.'_id';
         $name = $this->item_type.'_name';
         $price = $this->item_type.'_price';
-        $obj = new $model();
-        $obj = $obj->where($id, $this->item_id)->first();
-        return [
-            'name' => $obj->$name,
-            'price' => $obj->$price,
-        ];
+        if (class_exists($model)) {
+            $obj = new $model();
+            $obj = $obj->where($id, $this->item_id)->first();
+            return [
+                'name' => $obj->$name,
+                'price' => $obj->$price,
+            ];
+        }
     }
 
 }

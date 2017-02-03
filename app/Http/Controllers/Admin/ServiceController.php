@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Service;
+use App\Models\Services;
 
 class ServiceController extends Controller
 {
@@ -14,7 +14,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::paginate(config('telesales.paginate'));
+        $services = Services::paginate(config('telesales.paginate'));
         //dd($services);
         return view('admin.services.index', [
             'services' => $services,
@@ -37,7 +37,7 @@ class ServiceController extends Controller
             'services_price' => $request->services_price,
         ];
 
-        Service::create($services);
+        Services::create($services);
 
         return redirect()->action('Admin\ServiceController@index');
     }
@@ -49,7 +49,7 @@ class ServiceController extends Controller
      */
     public function edit(Request $request, $serviceId)
     {
-        $service = Service::find($serviceId);
+        $service = Services::find($serviceId);
         return view('admin.services.edit', [
             'service' => $service,
         ]);
@@ -67,7 +67,7 @@ class ServiceController extends Controller
             'services_price' => 'required|integer|min:1',
         ]);
         // dd($request);
-        $service = Service::find($serviceId);
+        $service = Services::find($serviceId);
         $service->services_name=$request->services_name;
         $service->services_price=$request->services_price;
         $service->save();
